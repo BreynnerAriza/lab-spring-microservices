@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: microservice-product
+        uri: lb://microservice-product
+        predicates:
+        - Path=/gateway/api/v1/product/**
+        - Header=token, 123456
+        - Method=GET,POST
+        - Query=color, verde
+        - Cookie=color, azul
+        filters:
+        - StripPrefix=1
+
+      - id: microservice-items
+        uri: lb://microservice-items
+        predicates:
+        - Path=/gateway/api/v1/items/**
+        filters:
+        - StripPrefix=1
+        - AddRequestHeader=token-request, ahdjahsjkda
+        - AddResponseHeader=token-response, 1231231
+        - AddRequestParameter=name, Breynner
