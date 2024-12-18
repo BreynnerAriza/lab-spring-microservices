@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "api-service", url = "localhost:8001", path = "/v1/persons")
+@FeignClient(name = "api-service", path = "/v1/persons")
 public interface PersonFeignClient {
 
     @GetMapping("/{id}")
