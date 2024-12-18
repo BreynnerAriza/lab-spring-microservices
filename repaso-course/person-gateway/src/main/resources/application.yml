@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+        routes:
+        - id: api-service
+          uri: http://localhost:8001
+          predicates:
+          - Path=/gateway/v1/persons/**
+          filters:
+          - StripPrefix=1
+        - id: api-client
+          uri: http://localhost:9001
+          predicates:
+          - Path=/gateway/v1/persons-client/**
+          filters:
+          - StripPrefix=1
