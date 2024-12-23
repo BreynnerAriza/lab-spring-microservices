@@ -40,7 +40,7 @@ public class ItemServiceWebClient implements IItemService{
         Map<String, Long> params = Map.of("id", id);
         return webClientBuilder.build()
                 .get()
-                .uri(urlBase + "/{id}", params)
+                .uri(urlBase + "/api/v1/product/{id}", params)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(Product.class)
