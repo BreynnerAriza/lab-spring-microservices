@@ -1,3 +1,24 @@
+resilience4j:
+  circuitbreaker:
+    configs:
+      defecto:
+        sliding-window-size: 5
+        failure-rate-threshold: 40
+        wait-duration-in-open-state: 20s
+        permitted-number-of-calls-in-half-open-state: 3
+        slow-call-rate-threshold: 40
+        slow-call-duration-threshold: 1s
+    instances:
+      products:
+        base-config: defecto
+  timelimiter:
+    configs:
+      defecto:
+        timeout-duration: 4s
+    instances:
+      items:
+        base-config: defecto
+
 spring:
   cloud:
     gateway:
@@ -11,6 +32,11 @@ spring:
         - Query=color, verde
         - Cookie=color, azul
         filters:
+        - name: CircuitBreaker
+          args:
+            name: products
+            statusCodes: 500
+            fallbackUri: /forward:/api/items/5
         - StripPrefix=1
 
       - id: microservice-items
