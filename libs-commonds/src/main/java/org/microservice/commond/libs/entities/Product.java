@@ -1,4 +1,4 @@
-package org.microservice.product.entities;
+package org.microservice.commond.libs.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

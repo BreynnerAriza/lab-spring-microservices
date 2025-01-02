@@ -1,9 +1,9 @@
 package org.microservice.items.services;
 
 import lombok.RequiredArgsConstructor;
+import org.microservice.commond.libs.entities.Product;
 import org.microservice.items.clients.IProductFeignClient;
 import org.microservice.items.models.Item;
-import org.microservice.items.models.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

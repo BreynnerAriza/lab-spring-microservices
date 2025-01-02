@@ -2,7 +2,6 @@ package org.microservice.items.services;
 
 import lombok.RequiredArgsConstructor;
 import org.microservice.items.models.Item;
-import org.microservice.items.models.Product;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;

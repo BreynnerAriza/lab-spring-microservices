@@ -1,6 +1,7 @@
 package org.microservice.product.services;
 
-import org.microservice.product.entities.Product;
+
+import org.microservice.commond.libs.entities.Product;
 
 import java.util.List;
 

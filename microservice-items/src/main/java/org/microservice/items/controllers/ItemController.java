@@ -3,9 +3,8 @@ package org.microservice.items.controllers;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
-import lombok.RequiredArgsConstructor;
+import org.microservice.commond.libs.entities.Product;
 import org.microservice.items.models.Item;
-import org.microservice.items.models.Product;
 import org.microservice.items.services.IItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

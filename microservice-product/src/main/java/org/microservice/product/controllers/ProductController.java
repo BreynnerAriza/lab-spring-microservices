@@ -1,7 +1,7 @@
 package org.microservice.product.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.microservice.product.entities.Product;
+import org.microservice.commond.libs.entities.Product;
 import org.microservice.product.services.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
 package org.microservice.items.clients;
 
-import org.microservice.items.models.Product;
+import org.microservice.commond.libs.entities.Product;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

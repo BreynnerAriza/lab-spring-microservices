@@ -1,7 +1,7 @@
 package org.microservice.product.services;
 
 import lombok.AllArgsConstructor;
-import org.microservice.product.entities.Product;
+import org.microservice.commond.libs.entities.Product;
 import org.microservice.product.repositories.ProductRepository;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
