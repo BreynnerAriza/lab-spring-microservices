@@ -10,30 +10,54 @@ import org.microservice.items.services.IItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/api/v1/items")
+@RefreshScope
 public class ItemController {
 
     private final IItemService itemService;
     private final CircuitBreakerFactory circuitBreakerFactory;
     private final Logger logger = LoggerFactory.getLogger(ItemController.class);
+    private final Environment environment;
+
+    @Value("${configuracion.texto}")
+    private String text;
 
     public ItemController(
             @Qualifier("itemServiceWebClient") IItemService itemService,
-            CircuitBreakerFactory circuitBreakerFactory
+            CircuitBreakerFactory circuitBreakerFactory,
+            Environment enviroment
     ) {
         this.itemService = itemService;
         this.circuitBreakerFactory = circuitBreakerFactory;
+        this.environment = enviroment;
+    }
+
+    @GetMapping("/fetch-config")
+    public ResponseEntity<Map<String, String>> getConfigs(){
+        Map<String, String> configs = new HashMap<>();
+        configs.put("Texto", text);
+
+        if(environment.getActiveProfiles().length > 0 && environment.getActiveProfiles()[0].equals("dev")){
+            configs.put("configuracion.autor.nombre", environment.getProperty("configuracion.autor.nombre"));
+            configs.put("configuracion.autor.email", environment.getProperty("configuracion.autor.email"));
+        }
+        return ResponseEntity.ok(configs);
     }
 
     @GetMapping
