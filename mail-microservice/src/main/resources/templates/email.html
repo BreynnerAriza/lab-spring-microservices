@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Thymeleaf</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .message {
+            font-size: 1.5rem;
+            color: #4CAF50;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            max-height: 150px; /* Ajusta esta altura según lo que necesites */
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Bienvenido a OcañaGourmet</h1>
+    <p class="message" th:text="${mensaje}">Aquí aparecerá tu mensaje dinámico</p>
+    <img th:src="'cid:' + ${imageCid}" alt="Imagen">
+</div>
+</body>
+</html>
